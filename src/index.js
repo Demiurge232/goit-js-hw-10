@@ -11,11 +11,15 @@ const refs = {
 
 const DEBOUNCE_DELAY = 300;
 
+const reset = () => {
+  refs.ulEl.innerHTML = '';
+  refs.divEl.innerHTML = '';
+};
+
 function searchCity(evt) {
   const cityName = evt.target.value.trim();
   if (!cityName) {
-    refs.ulEl.innerHTML = '';
-    refs.divEl.innerHTML = '';
+    reset();
     return;
   }
 
@@ -35,7 +39,10 @@ function searchCity(evt) {
         refs.ulEl.innerHTML = '';
       }
     })
-    .catch(err => Notify.failure('Oops, there is no country with that name'));
+    .catch(err => {
+      Notify.failure('Oops, there is no country with that name');
+      reset();
+    });
 }
 
 function divElMarkup(arr) {
