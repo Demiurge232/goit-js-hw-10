@@ -67,4 +67,3 @@ function ulElMarkup(arr) {
 }
 
 refs.inputEl.addEventListener('input', debounce(searchCity, DEBOUNCE_DELAY));
-const adf = null;
